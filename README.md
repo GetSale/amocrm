@@ -1,7 +1,7 @@
 #GetSale
 Contributors: GetSale Team  
 Tags: getsale, popup, popups  
-Stable tag: 1.0.0 
+Stable tag: 1.0.0  
 License: GNU General Public License, version 3  
 
 **GetSale** &mdash; профессиональный инструмент для создания popup-окон.
@@ -61,7 +61,7 @@ GetSale поможет вашему сайту нарастить контакт
 
 **Сегментирование посетителей**
 
-##Installation
+## Installation
 Для работы с AMOCRM необходимо подключить свой сайт к (GetSale)[https://getsale.io]
 
 1. Установите виджет GetSale в ваш AMOCRM
