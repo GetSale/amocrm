@@ -7,13 +7,13 @@
     "settings":{
         "email":"Email",
         "api_key":"Kлюч API",
-        "webdomain":"Адрес интернет-магазина"
+        "webdomain":"Адрес сайта"
     },
     "userLang": {
         "error": "Ошибка",
         "congrats": "Поздравляем!",
         "wrong_credentals": "Неправильный Email или ключ API.",
-        "project_not_found" : "Неправильно уазан домен интернет-магазина.",
+        "project_not_found" : "Неправильно уазан адрес сайта.",
         "success" : "Сайт успешно привязан к AMOCRM!",
         "ups" : "Сервер GetSale внеменно недоступен, попробуйте, пожалуйста, позднее.",
         "widget_off" : "Виджет GetSale отключен!"
