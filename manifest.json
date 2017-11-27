@@ -36,11 +36,6 @@
       "name": "settings.webdomain",
       "type": "text",
       "required": true
-    },
-    "aferta": {
-      "name": "settings.aferta",
-      "type": "radio",
-      "required": true
     }
   }
 }
