@@ -7,15 +7,14 @@
     "settings":{
         "email":"Email",
         "api_key":"API Key",
-        "webdomain":"Online store domain"
+        "webdomain":"Website domain"
     },
     "userLang": {
         "error": "Error",
         "congrats": "Congratulations!",
         "wrong_credentals": "Attention! Email or API key is invalid. Please, check and try again",
-        "project_not_found" : "Online store domain is not found.",
+        "project_not_found" : "Website domain is not found.",
         "success" : "Your website is successfully linked to your AMOCRM!",
         "ups" : "GetSale is unavailable at this moment, please try again later.",
-        "widget_off" : "GetSale widget is disable!"
     }
 }

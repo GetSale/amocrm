@@ -2,7 +2,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
     var CustomWidget = function () {
         var self = this;
 
-        this.sendInfo = function (gs_email, gs_apikey, amo_login, amo_hash, webdomain, amodomain, widget) {
+        this.sendInfo = function (gs_email, gs_apikey, amo_login, amo_hash, webdomain, amodomain) {
             self.crm_post(
                 'https://amo.intplugins.ru/setup.php',
                 {
@@ -11,8 +11,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                     amouser: amo_login,
                     authhash: amo_hash,
                     webdomain: webdomain,
-                    amodomain: amodomain,
-                    widgeton: widget
+                    amodomain: amodomain
                 },
                 function (data) {
                     var error_mess = '';
@@ -25,21 +24,6 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                                 $modal_body
                                     .trigger('modal:loaded')
                                     .html('<h1>' + lang.congrats + '</h1><p>' + lang.success + '</p>')
-                                    .trigger('modal:centrify')
-                                    .append('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span>');
-                            },
-                            destroy: function () {
-                            }
-                        });
-                    }
-
-                    if (data.status == 'off') {
-                        modal = new Modal({
-                            class_name: 'modal-window',
-                            init: function ($modal_body) {
-                                $modal_body
-                                    .trigger('modal:loaded')
-                                    .html('<h1>' + lang.widget_off + '</p>')
                                     .trigger('modal:centrify')
                                     .append('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span>');
                             },
@@ -109,8 +93,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                 var amo_login = self.system().amouser;
                 var amo_hash = self.system().amohash;
                 var amo_domain = self.system().domain;
-                var gs_widget = $("label[for='widget_active__sw']").hasClass('switcher__on');
-                self.sendInfo(gs_email, gs_apikey, amo_login, amo_hash, gs_domain, amo_domain, gs_widget);
+                self.sendInfo(gs_email, gs_apikey, amo_login, amo_hash, gs_domain, amo_domain);
                 return true;
 
             },
