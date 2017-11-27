@@ -7,7 +7,8 @@
     "settings":{
         "email":"Email",
         "api_key":"Kлюч API",
-        "webdomain":"Адрес сайта"
+        "webdomain":"Адрес сайта",
+        "aferta": "Я согласен на обработку персональных данных сервером GetSale.io (ключ API, Email, домен)"
     },
     "userLang": {
         "error": "Ошибка",

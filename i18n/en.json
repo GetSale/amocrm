@@ -7,7 +7,8 @@
     "settings":{
         "email":"Email",
         "api_key":"API Key",
-        "webdomain":"Website domain"
+        "webdomain":"Website domain",
+        "aferta": "I agree to the processing of personal data by the server GetSale.io (key API, email)"
     },
     "userLang": {
         "error": "Error",
