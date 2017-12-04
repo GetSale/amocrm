@@ -2,20 +2,21 @@
     "widget":{
         "name":"GetSale",
         "short_description":"GetSale &mdash; professional tool for creating popup windows.",
-        "description":"GetSale is a powerful tool for creating all types of widgets for your website. You can increase your sales dramatically creating special offer, callback widgets, coupons blasts and many more. Create, Show and Sell - this is our goal!"
+        "description":"GetSale is a powerful tool for creating all types of widgets for your website. You can increase your sales dramatically creating special offer, callback widgets, coupons blasts and many more. Create, Show and Sell - this is our goal!<br/><hr><br/><input id=\"getsale_check\" type=\"checkbox\" value=\"true\" name=\"getsale_check\" checked=\"checked\"> I agree to the processing of personal data by the server GetSale.io (API key, Email, domain)"
     },
     "settings":{
         "email":"Email",
         "api_key":"API Key",
-        "webdomain":"Website domain",
-        "aferta": "I agree to the processing of personal data by the server GetSale.io (API key, Email, domain)"
+        "webdomain":"Website domain"
     },
     "userLang": {
         "error": "Error",
         "congrats": "Congratulations!",
         "wrong_credentals": "Attention! Email or API key is invalid. Please, check and try again",
-        "project_not_found" : "Website domain is not found.",
+        "project_not_found" : "Online store domain is not found.",
         "success" : "Your website is successfully linked to your AMOCRM!",
         "ups" : "GetSale is unavailable at this moment, please try again later.",
+        "widget_off" : "GetSale widget is disable!",
+        "gs_check_error" : "You must agree to the processing of personal data by the server GetSale.io (API key, Email, domain)"
     }
 }

@@ -17,21 +17,6 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                     var error_mess = '';
                     var lang = self.i18n('userLang');
 
-                    if (data.status == 1) {
-                        modal = new Modal({
-                            class_name: 'modal-window',
-                            init: function ($modal_body) {
-                                $modal_body
-                                    .trigger('modal:loaded')
-                                    .html('<h1>' + lang.congrats + '</h1><p>' + lang.success + '</p>')
-                                    .trigger('modal:centrify')
-                                    .append('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span>');
-                            },
-                            destroy: function () {
-                            }
-                        });
-                    }
-
                     if (data.status == 'error') {
                         if (data.response) {
                             error_mess = '<h1>' + lang.error + '</h1><p>' + lang.project_not_found + '</p>';
@@ -47,6 +32,21 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                                 $modal_body
                                     .trigger('modal:loaded')
                                     .html(error_mess)
+                                    .trigger('modal:centrify')
+                                    .append('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span>');
+                            },
+                            destroy: function () {
+                            }
+                        });
+                    }
+
+                    if (data.status == '1') {
+                        modal = new Modal({
+                            class_name: 'modal-window',
+                            init: function ($modal_body) {
+                                $modal_body
+                                    .trigger('modal:loaded')
+                                    .html('<h1>' + lang.congrats + '</h1><p>' + lang.success + '</p>')
                                     .trigger('modal:centrify')
                                     .append('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span>');
                             },
@@ -90,12 +90,28 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                 var gs_email = $('input[name="email"]').val();
                 var gs_apikey = $('input[name="api_key"]').val();
                 var gs_domain = $('input[name="webdomain"]').val();
+                var gs_check = $('input[name="getsale_check"]').is(':checked');
                 var amo_login = self.system().amouser;
                 var amo_hash = self.system().amohash;
                 var amo_domain = self.system().domain;
-                self.sendInfo(gs_email, gs_apikey, amo_login, amo_hash, gs_domain, amo_domain);
+                if(gs_check) {
+                    self.sendInfo(gs_email, gs_apikey, amo_login, amo_hash, gs_domain, amo_domain);
+                } else {
+                    var lang = self.i18n('userLang');
+                    modal = new Modal({
+                        class_name: 'modal-window',
+                        init: function ($modal_body) {
+                            $modal_body
+                                .trigger('modal:loaded')
+                                .html(lang.gs_check_error)
+                                .trigger('modal:centrify')
+                                .append('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span>');
+                        },
+                        destroy: function () {
+                        }
+                    });
+                }
                 return true;
-
             },
             destroy: function () {
             },
@@ -111,7 +127,8 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                 selected: function () {
                 }
             }
-        };
+    }
+        ;
         return this;
     };
 
