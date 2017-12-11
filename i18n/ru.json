@@ -2,7 +2,7 @@
     "widget":{
         "name":"GetSale",
         "short_description":"GetSale &mdash; профессиональный инструмент для создания popup-окон.",
-        "description":"GetSale поможет вашему сайту нарастить контактную базу лояльных клиентов, информировать посетителей о предстоящих акциях, распродажах, раздавать промокоды, скидки и многое другое, что напрямую повлияет на конверсии покупателей и рост продаж.<br/><hr><br/><input id=\"getsale_check\" name=\"getsale_check\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Я согласен на обработку персональных данных сервером GetSale.io (API ключа, email)"
+        "description":"GetSale поможет вашему сайту нарастить контактную базу лояльных клиентов, информировать посетителей о предстоящих акциях, распродажах, раздавать промокоды, скидки и многое другое, что напрямую повлияет на конверсии покупателей и рост продаж.<br/>Техподдержка: <a href=\"mailto:support@getsale.io\">support@getsale.io</a><br/><hr><br/><input id=\"getsale_check\" name=\"getsale_check\" type=\"checkbox\" value=\"true\" checked=\"checked\"> Я согласен на обработку персональных данных сервером GetSale.io (API ключа, email)"
     },
     "settings":{
         "email":"Email",

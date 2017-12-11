@@ -2,7 +2,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
     var CustomWidget = function () {
         var self = this;
 
-        this.sendInfo = function (gs_email, gs_apikey, amo_login, amo_hash, webdomain, amodomain) {
+        this.sendInfo = function (gs_email, gs_apikey, amo_login, amo_hash, webdomain, amodomain, aferta) {
             self.crm_post(
                 'https://amo.intplugins.ru/setup.php',
                 {
@@ -11,7 +11,8 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                     amouser: amo_login,
                     authhash: amo_hash,
                     webdomain: webdomain,
-                    amodomain: amodomain
+                    amodomain: amodomain,
+                    aferta: aferta
                 },
                 function (data) {
                     var error_mess = '';
@@ -23,12 +24,12 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                         }
                         if (data.code) {
                             error_mess = '<h1>' + lang.error + '</h1><p>' + lang.wrong_credentals + '</p>';
-
                         }
 
                         modal = new Modal({
                             class_name: 'modal-window',
                             init: function ($modal_body) {
+                                var $this = $(this);
                                 $modal_body
                                     .trigger('modal:loaded')
                                     .html(error_mess)
@@ -38,12 +39,14 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                             destroy: function () {
                             }
                         });
+                        return true;
                     }
 
                     if (data.status == '1') {
                         modal = new Modal({
                             class_name: 'modal-window',
                             init: function ($modal_body) {
+                                var $this = $(this);
                                 $modal_body
                                     .trigger('modal:loaded')
                                     .html('<h1>' + lang.congrats + '</h1><p>' + lang.success + '</p>')
@@ -53,6 +56,23 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                             destroy: function () {
                             }
                         });
+                        return true;
+                    }
+                    if (data.status == 'aferta') {
+                        modal = new Modal({
+                            class_name: 'modal-window',
+                            init: function ($modal_body) {
+                                var $this = $(this);
+                                $modal_body
+                                    .trigger('modal:loaded')
+                                    .html(lang.gs_check_error)
+                                    .trigger('modal:centrify')
+                                    .append('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span>');
+                            },
+                            destroy: function () {
+                            }
+                        });
+                        return true;
                     }
                 },
                 'json',
@@ -60,6 +80,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                     modal = new Modal({
                         class_name: 'modal-window',
                         init: function ($modal_body) {
+                            var $this = $(this);
                             $modal_body
                                 .trigger('modal:loaded')
                                 .html(lang.ups)
@@ -70,6 +91,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                         destroy: function () {
                         }
                     });
+                    return true;
                 }
             );
         };
@@ -94,24 +116,8 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                 var amo_login = self.system().amouser;
                 var amo_hash = self.system().amohash;
                 var amo_domain = self.system().domain;
-                if(gs_check) {
-                    self.sendInfo(gs_email, gs_apikey, amo_login, amo_hash, gs_domain, amo_domain);
-                } else {
-                    var lang = self.i18n('userLang');
-                    modal = new Modal({
-                        class_name: 'modal-window',
-                        init: function ($modal_body) {
-                            $modal_body
-                                .trigger('modal:loaded')
-                                .html(lang.gs_check_error)
-                                .trigger('modal:centrify')
-                                .append('<span class="modal-body__close"><span class="icon icon-modal-close"></span></span>');
-                        },
-                        destroy: function () {
-                        }
-                    });
-                }
-                return true;
+                    self.sendInfo(gs_email, gs_apikey, amo_login, amo_hash, gs_domain, amo_domain, gs_check);
+                    return true;
             },
             destroy: function () {
             },

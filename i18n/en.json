@@ -2,7 +2,7 @@
     "widget":{
         "name":"GetSale",
         "short_description":"GetSale &mdash; professional tool for creating popup windows.",
-        "description":"GetSale is a powerful tool for creating all types of widgets for your website. You can increase your sales dramatically creating special offer, callback widgets, coupons blasts and many more. Create, Show and Sell - this is our goal!<br/><hr><br/><input id=\"getsale_check\" type=\"checkbox\" value=\"true\" name=\"getsale_check\" checked=\"checked\"> I agree to the processing of personal data by the server GetSale.io (API key, Email, domain)"
+        "description":"GetSale is a powerful tool for creating all types of widgets for your website. You can increase your sales dramatically creating special offer, callback widgets, coupons blasts and many more. Create, Show and Sell - this is our goal!<br/>Support: <a href=\"mailto:support@getsale.io\">support@getsale.io</a><br/><hr><br/><input id=\"getsale_check\" type=\"checkbox\" value=\"true\" name=\"getsale_check\" checked=\"checked\"> I agree to the processing of personal data by the server GetSale.io (API key, Email, domain)"
     },
     "settings":{
         "email":"Email",
