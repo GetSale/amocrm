@@ -1,4 +1,4 @@
-#GetSale
+# GetSale  
 Contributors: GetSale Team  
 Tags: getsale, popup, popups  
 Stable tag: 1.0.0  
