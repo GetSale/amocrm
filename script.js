@@ -2,7 +2,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
     var CustomWidget = function () {
         var self = this;
 
-        this.sendInfo = function (gs_email, gs_apikey, amo_login, amo_hash, webdomain, amodomain, aferta) {
+        this.sendInfo = function (gs_email, gs_apikey, amo_login, amo_hash, webdomain, amodomain, is_active) {
             self.crm_post(
                 'https://amo.intplugins.ru/setup.php',
                 {
@@ -12,7 +12,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                     authhash: amo_hash,
                     webdomain: webdomain,
                     amodomain: amodomain,
-                    aferta: aferta
+                    aferta: is_active
                 },
                 function (data) {
                     var error_mess = '';
@@ -106,18 +106,29 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                 return true;
             },
             settings: function () {
+                $(".widget_settings_block").find("input[name='data_transfer']")
+                    .attr("type", "checkbox")
+                    .change(function () {
+                        $(this).val($(this).prop("checked") ? '1' : '');
+                    }).parent().css("width", 100);
+                var agreement = $(".widget_settings_block").find("input[name='data_transfer']");
+                if (self.get_settings().atc_token) {
+                    agreement.prop("checked", true);
+                }
                 return true;
             },
             onSave: function () {
                 var gs_email = $('input[name="email"]').val();
                 var gs_apikey = $('input[name="api_key"]').val();
                 var gs_domain = $('input[name="webdomain"]').val();
-                var gs_check = $('input[name="getsale_check"]').is(':checked');
                 var amo_login = self.system().amouser;
                 var amo_hash = self.system().amohash;
                 var amo_domain = self.system().domain;
-                    self.sendInfo(gs_email, gs_apikey, amo_login, amo_hash, gs_domain, amo_domain, gs_check);
-                    return true;
+                var is_active = $(".widget_settings_block").find("input[name='widget_active']").is(':checked');
+                if (is_active) {
+                    self.sendInfo(gs_email, gs_apikey, amo_login, amo_hash, gs_domain, amo_domain, is_active);
+                }
+                return true;
             },
             destroy: function () {
             },
@@ -133,7 +144,7 @@ define(['jquery', 'lib/components/base/modal'], function ($, Modal) {
                 selected: function () {
                 }
             }
-    }
+        }
         ;
         return this;
     };

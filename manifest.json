@@ -3,7 +3,7 @@
     "name": "widget.name",
     "description": "widget.description",
     "short_description": "widget.short_description",
-    "code": "_CODE_",
+    "code": "getsale",
     "secret_key": "_SECRET_KEY_",
     "version": "1.0.0",
     "interface_version": 2,
@@ -34,6 +34,11 @@
     },
     "webdomain": {
       "name": "settings.webdomain",
+      "type": "text",
+      "required": true
+    },
+    "data_transfer": {
+      "name": "settings.data_transfer",
       "type": "text",
       "required": true
     }
